@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220907 19:54:06.755" rpa="false" schemaversion="3">
+<suite id="s1" name="TestCasesAPIBooks" source="C:\ProjetosCursosUdemy\RobotFramework\API Testing\BOOKSAPI\TestCasesAPIBooks.robot">
+<kw name="Connect to the API" library="ResourcesAPI" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>fakeAPI</arg>
+<arg>${URL_API}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220907 19:54:06.884" level="INFO">Creating Session using : alias=fakeAPI, url=https://fakerestapi.azurewebsites.net/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220907 19:54:06.884" endtime="20220907 19:54:06.884"/>
+</kw>
+<status status="PASS" starttime="20220907 19:54:06.883" endtime="20220907 19:54:06.884"/>
+</kw>
+<test id="s1-t1" name="Test Case #3 - POST A BOOK" line="24">
+<kw name="Request POST /Books" library="ResourcesAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADERS}</var>
+<arg>content-type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220907 19:54:06.886" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
+<status status="PASS" starttime="20220907 19:54:06.885" endtime="20220907 19:54:06.886"/>
+</kw>
+<kw name="Update Session" library="RequestsLibrary">
+<arg>fakeAPI</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>Updates HTTP Session Headers and Cookies.</doc>
+<status status="PASS" starttime="20220907 19:54:06.886" endtime="20220907 19:54:06.886"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${RESPONSE}</var>
+<arg>fakeAPI</arg>
+<arg>Books</arg>
+<arg>data={"id": 462,"title": "Lateralus","description": "by Tool","pageCount": 13,"excerpt": "Overthinking, overanalyzing separates the body from the mind","publishDate": "2022-09-07T16:01:04.913Z"}</arg>
+<arg>json={}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220907 19:54:07.750" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/Books 
+ path_url=/api/v1/Books 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '189'} 
+ body={"id": 462,"title": "Lateralus","description": "by Tool","pageCount": 13,"excerpt": "Overthinking, overanalyzing separates the body from the mind","publishDate": "2022-09-07T16:01:04.913Z"} 
+ </msg>
+<msg timestamp="20220907 19:54:07.750" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/Books 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Wed, 07 Sep 2022 22:54:06 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":462,"title":"Lateralus","description":"by Tool","pageCount":13,"excerpt":"Overthinking, overanalyzing separates the body from the mind","publishDate":"2022-09-07T16:01:04.913Z"} 
+ </msg>
+<msg timestamp="20220907 19:54:07.750" level="INFO">C:\Program Files\Python\Python 3.10.6\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakerestapi.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220907 19:54:07.751" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220907 19:54:06.886" endtime="20220907 19:54:07.751"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220907 19:54:07.751" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220907 19:54:07.751" endtime="20220907 19:54:07.751"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${RESPONSE.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220907 19:54:07.752" level="INFO">{"id":462,"title":"Lateralus","description":"by Tool","pageCount":13,"excerpt":"Overthinking, overanalyzing separates the body from the mind","publishDate":"2022-09-07T16:01:04.913Z"}</msg>
+<status status="PASS" starttime="20220907 19:54:07.752" endtime="20220907 19:54:07.752"/>
+</kw>
+<status status="PASS" starttime="20220907 19:54:06.885" endtime="20220907 19:54:07.752"/>
+</kw>
+<kw name="Check all info regarding the book posted" library="ResourcesAPI">
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPONSE.json()}</arg>
+<arg>id</arg>
+<arg>${BOOK_POST.id}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220907 19:54:07.753" endtime="20220907 19:54:07.755"/>
+</kw>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPONSE.json()}</arg>
+<arg>title</arg>
+<arg>${BOOK_POST.title}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220907 19:54:07.755" endtime="20220907 19:54:07.757"/>
+</kw>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPONSE.json()}</arg>
+<arg>description</arg>
+<arg>${BOOK_POST.description}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220907 19:54:07.757" endtime="20220907 19:54:07.758"/>
+</kw>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPONSE.json()}</arg>
+<arg>pageCount</arg>
+<arg>${BOOK_POST.pageCount}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220907 19:54:07.758" endtime="20220907 19:54:07.760"/>
+</kw>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPONSE.json()}</arg>
+<arg>excerpt</arg>
+<arg>${BOOK_POST.excerpt}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220907 19:54:07.760" endtime="20220907 19:54:07.761"/>
+</kw>
+<kw name="Dictionary Should Contain Item" library="Collections">
+<arg>${RESPONSE.json()}</arg>
+<arg>publishDate</arg>
+<arg>${BOOK_POST.publishDate}</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" starttime="20220907 19:54:07.762" endtime="20220907 19:54:07.763"/>
+</kw>
+<status status="PASS" starttime="20220907 19:54:07.753" endtime="20220907 19:54:07.764"/>
+</kw>
+<tag>POST</tag>
+<status status="PASS" starttime="20220907 19:54:06.885" endtime="20220907 19:54:07.764"/>
+</test>
+<doc>API Documentation: https://fakerestapi.azurewebsites.net/api/v1/Books</doc>
+<status status="PASS" starttime="20220907 19:54:06.757" endtime="20220907 19:54:07.766"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">POST</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestCasesAPIBooks">TestCasesAPIBooks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

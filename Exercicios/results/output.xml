@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220905 16:43:28.242" rpa="false" schemaversion="3">
+<suite id="s1" name="KeywordArguments" source="C:\ProjetosCursosUdemy\RobotFramework\Exercicios\KeywordArguments.robot">
+<test id="s1-t1" name="Test Case #1" line="11">
+<kw name="Produzindo um e-mail customizado">
+<msg timestamp="20220905 16:43:28.268" level="TRACE">Arguments: [  ]</msg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}</arg>
+<doc>Logs the given message to the console.</doc>
+<msg timestamp="20220905 16:43:28.269" level="TRACE">Arguments: [ '\r\n' ]</msg>
+<msg timestamp="20220905 16:43:28.269" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20220905 16:43:28.268" endtime="20220905 16:43:28.269"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Gerador de e-mail</arg>
+<arg>${PESSOA.nome}</arg>
+<arg>${PESSOA.sobrenome}</arg>
+<doc>Logs the given message to the console.</doc>
+<msg timestamp="20220905 16:43:28.270" level="TRACE">Arguments: [ 'Gerador de e-mail' | 'MaynardJames' | 'Keenan' ]</msg>
+<msg timestamp="20220905 16:43:28.271" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20220905 16:43:28.269" endtime="20220905 16:43:28.271"/>
+</kw>
+<msg timestamp="20220905 16:43:28.271" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20220905 16:43:28.268" endtime="20220905 16:43:28.271"/>
+</kw>
+<status status="PASS" starttime="20220905 16:43:28.267" endtime="20220905 16:43:28.272"/>
+</test>
+<doc>Exemplos de uso de keywords com argumentos</doc>
+<status status="PASS" starttime="20220905 16:43:28.243" endtime="20220905 16:43:28.273"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="KeywordArguments">KeywordArguments</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220905 16:49:26.357" rpa="false" schemaversion="3">
+<suite id="s1" name="KeywordArguments" source="c:\ProjetosCursosUdemy\RobotFramework\Exercicios\KeywordArguments.robot">
+<test id="s1-t1" name="Test Case #1" line="11">
+<kw name="Produzindo um e-mail customizado">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${\n}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220905 16:49:26.395" endtime="20220905 16:49:26.396"/>
+</kw>
+<kw name="Gerador de e-mail">
+<var>${VAR}</var>
+<arg>${PESSOA.nome}</arg>
+<arg>${PESSOA.sobrenome}</arg>
+<kw name="Generate Random String" library="String">
+<var>${RANDOM_STRING}</var>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220905 16:49:26.398" level="INFO">${RANDOM_STRING} = ApEG2ZtO</msg>
+<status status="PASS" starttime="20220905 16:49:26.397" endtime="20220905 16:49:26.406"/>
+</kw>
+<msg timestamp="20220905 16:49:26.407" level="INFO">${VAR} = MaynardJamesKeenanApEG2ZtO@testerobot.com</msg>
+<status status="PASS" starttime="20220905 16:49:26.396" endtime="20220905 16:49:26.407"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${VAR}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220905 16:49:26.407" endtime="20220905 16:49:26.408"/>
+</kw>
+<status status="PASS" starttime="20220905 16:49:26.394" endtime="20220905 16:49:26.408"/>
+</kw>
+<status status="PASS" starttime="20220905 16:49:26.393" endtime="20220905 16:49:26.409"/>
+</test>
+<doc>Exemplos de uso de keywords com argumentos</doc>
+<status status="PASS" starttime="20220905 16:49:26.365" endtime="20220905 16:49:26.410"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="KeywordArguments">KeywordArguments</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
